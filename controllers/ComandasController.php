@@ -317,7 +317,6 @@ class ComandasController extends Controller
                  }
             }
 
-
             $model->id_usuario = $_POST['id_usuario'];
             $model->id_cliente = $_POST['cedula_cliente'];
             $model->id_mesa = $_POST['TbComandas']['id_mesa'];
@@ -379,6 +378,7 @@ class ComandasController extends Controller
             'croissants'=> TbComandas::getCroissants(),
             'postres'=> TbComandas::getPostres(),
             'productosUpdate' => TbComandas::getProductosUpdate(),
+            'observaciones' => TbComandas::getObservaciones(),
         ]);
     }
 

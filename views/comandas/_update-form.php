@@ -122,7 +122,8 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_clasicos" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_clasicos" class="form-control" value="<?php echo($observaciones[0]['obs_clasicos']) ?>">
+
                     </td>
                 </tr>
             </table>     
@@ -170,7 +171,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_alinados"  id="obs_alinados" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_alinados"  id="obs_alinados" class="form-control" value="<?php echo($observaciones[0]['obs_alinados']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -218,7 +219,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_especiales"  id="obs_especiales" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_especiales"  id="obs_especiales" class="form-control" value="<?php echo($observaciones[0]['obs_especiales']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -268,7 +269,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_autor"  id="obs_autor" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_autor"  id="obs_autor" class="form-control" value="<?php echo($observaciones[0]['obs_autor']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -316,7 +317,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_metodos"  id="obs_metodos" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_metodos"  id="obs_metodos" class="form-control" value="<?php echo($observaciones[0]['obs_metodos']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -364,7 +365,7 @@ use yii\web\JsExpression;
                 <tr>
                    <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_frappuchinos"  id="obs_frappuchinos" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_frappuchinos"  id="obs_frappuchinos" class="form-control" value="<?php echo($observaciones[0]['obs_frappuchinos']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -414,7 +415,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_frullatos"  id="obs_frullatos" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_frullatos"  id="obs_frullatos" class="form-control" value="<?php echo($observaciones[0]['obs_frullatos']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -462,7 +463,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_sandwish"  id="obs_sandwish" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_sandwish"  id="obs_sandwish" class="form-control" value="<?php echo($observaciones[0]['obs_sandwish']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -510,7 +511,7 @@ use yii\web\JsExpression;
                 <tr>
                    <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_tequenos"  id="obs_tequenos" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_tequenos"  id="obs_tequenos" class="form-control" value="<?php echo($observaciones[0]['obs_tequenos']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -560,7 +561,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_panquecas"  id="obs_panquecas" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_panquecas"  id="obs_panquecas" class="form-control" value="<?php echo($observaciones[0]['obs_panquecas']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -608,7 +609,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_waffles"  id="obs_waffles" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_waffles"  id="obs_waffles" class="form-control" value="<?php echo($observaciones[0]['obs_waffles']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -656,7 +657,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_adicionales"  id="obs_adicionales" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_adicionales"  id="obs_adicionales" class="form-control" value="<?php echo($observaciones[0]['obs_adicionales']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -704,7 +705,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_croissants"  id="obs_croissants" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_croissants"  id="obs_croissants" class="form-control" value="<?php echo($observaciones[0]['obs_croissants']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -752,7 +753,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_postres"  id="obs_postres" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_postres"  id="obs_postres" class="form-control" value="<?php echo($observaciones[0]['obs_postres']) ?>">
                     </td>
                 </tr>
             </table>     
@@ -773,7 +774,26 @@ use yii\web\JsExpression;
             //echo $pCtd[$i];
             $this->registerJs('
                 $("#ctd'.$pId[$i].'").val('.$pCtd[$i].');
-                $("td #ctd'.$pId[$i].'").css("background", "#74ac37");
+                $("td #ctd'.$pId[$i].'").css({"background":"#74ac37",
+                                            "color":"#fff"
+                                            });
             ');
         }
+
+        $this->registerJs('
+            if($("#obs_clasicos").val() != ""){$("#obs_clasicos").css({"background":"#74ac37","color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_alinados").val() != ""){$("#obs_alinados").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_especiales").val() != ""){$("#obs_especiales").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_autor").val() != ""){$("#obs_autor").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_metodos").val() != ""){$("#obs_metodos").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_frappuchinos").val() != ""){$("#obs_frappuchinos").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_frullatos").val() != ""){$("#obs_frullatos").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_sandwish").val() != ""){$("#obs_sandwish").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_tequenos").val() != ""){$("#obs_tequenos").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_panquecas").val() != ""){$("#obs_panquecas").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_waffles").val() != ""){$("#obs_waffles").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_adicionales").val() != ""){$("#obs_adicionales").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_croissants").val() != ""){$("#obs_croissants").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+            if($("#obs_postres").val() != ""){$("#obs_postres").css({"background":"#74ac37", "color":"#fff", "text-transform":"uppercase"})}
+        ');
 ?>

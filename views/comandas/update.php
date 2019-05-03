@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Modificar');
         'croissants' => $croissants,
         'postres' => $postres,
         'productosUpdate' => $productosUpdate,
+        'observaciones' => $observaciones,
     ]) ?>
 
 </div>

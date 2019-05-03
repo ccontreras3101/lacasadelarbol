@@ -251,7 +251,10 @@ class TbComandas extends \yii\db\ActiveRecord
     {
         return TbProductos::find()->where(['grupo' => 'postres'])->All();
     }
-       
+    public static function getObservaciones()
+    {
+        return TbComandas::find()->where(['id' => $_GET['id']])->All();
+    }
 }
 
 
