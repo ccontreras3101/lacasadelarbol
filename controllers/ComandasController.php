@@ -169,19 +169,21 @@ class ComandasController extends Controller
                                  $cafe->status_cocina = 1;
                             }
                         }
-                        $cafe->obs_expressos = $_POST['obs_expressos'];
-                        $cafe->obs_lattes = $_POST['obs_lattes'];
-                        $cafe->obs_bfrias = $_POST['obs_bfrias'];
-                        $cafe->obs_energy = $_POST['obs_energy'];
-                        $cafe->obs_shake = $_POST['obs_shake'];
-                        $cafe->obs_fruits = $_POST['obs_fruits'];
-                        $cafe->obs_paninis = $_POST['obs_paninis'];
-                        $cafe->obs_salads = $_POST['obs_salads'];
-                        $cafe->obs_hotcakes = $_POST['obs_hotcakes'];
-                        $cafe->obs_cakes = $_POST['obs_cakes'];
-                        $cafe->obs_deserts = $_POST['obs_deserts'];                        
-                        $cafe->h_pedido = $_POST['h_pedido'];
-                            $cafe->save(false);
+                        $cafe->obs_clasicos   = $_POST['obs_clasicos'];
+                        $cafe->obs_alinados   = $_POST['obs_alinados'];
+                        $cafe->obs_especiales = $_POST['obs_especiales'];
+                        $cafe->obs_autor = $_POST['obs_autor'];
+                        $cafe->obs_metodos = $_POST['obs_metodos'];
+                        $cafe->obs_frappuchinos = $_POST['obs_frappuchinos'];
+                        $cafe->obs_frullatos  = $_POST['obs_frullatos'];
+                        $cafe->obs_sandwish   = $_POST['obs_sandwish'];
+                        $cafe->obs_tequenos   = $_POST['obs_tequenos'];
+                        $cafe->obs_panquecas  = $_POST['obs_panquecas'];
+                        $cafe->obs_waffles = $_POST['obs_waffles'];
+                        $cafe->obs_adicionales = $_POST['obs_adicionales'];
+                        $cafe->obs_croissants = $_POST['obs_croissants'];
+                        $cafe->obs_postres = $_POST['obs_postres'];
+                        $cafe->save(false);
 
                         $areaMesas = new TbMesas();
                             $areaMesas->id_comanda =  $cafe->id;
@@ -235,34 +237,21 @@ class ComandasController extends Controller
                                      $cafe->status_cocina = 1;
                                 }
                             }
-                            $cafe->obs_expressos = $_POST['obs_expressos'];
-                            $cafe->obs_lattes = $_POST['obs_lattes'];
-                            $cafe->obs_bfrias = $_POST['obs_bfrias'];
-                            $cafe->obs_energy = $_POST['obs_energy'];
-                            $cafe->obs_shake = $_POST['obs_shake'];
-                            $cafe->obs_fruits = $_POST['obs_fruits'];
-                            $cafe->obs_paninis = $_POST['obs_paninis'];
-                            $cafe->obs_salads = $_POST['obs_salads'];
-                            $cafe->obs_hotcakes = $_POST['obs_hotcakes'];
-                            $cafe->obs_cakes = $_POST['obs_cakes'];
-                            $cafe->obs_deserts = $_POST['obs_deserts'];                        
-                            $cafe->h_pedido = $_POST['h_pedido'];
+                            $cafe->obs_clasicos   = $_POST['obs_clasicos'];
+                            $cafe->obs_alinados   = $_POST['obs_alinados'];
+                            $cafe->obs_especiales = $_POST['obs_especiales'];
+                            $cafe->obs_autor = $_POST['obs_autor'];
+                            $cafe->obs_metodos = $_POST['obs_metodos'];
+                            $cafe->obs_frappuchinos = $_POST['obs_frappuchinos'];
+                            $cafe->obs_frullatos  = $_POST['obs_frullatos'];
+                            $cafe->obs_sandwish   = $_POST['obs_sandwish'];
+                            $cafe->obs_tequenos   = $_POST['obs_tequenos'];
+                            $cafe->obs_panquecas  = $_POST['obs_panquecas'];
+                            $cafe->obs_waffles = $_POST['obs_waffles'];
+                            $cafe->obs_adicionales = $_POST['obs_adicionales'];
+                            $cafe->obs_croissants = $_POST['obs_croissants'];
+                            $cafe->obs_postres = $_POST['obs_postres'];
                             $cafe->save(false);
-
-                            /*obs_clasicos  
-obs_alinados  
-obs_especiales
-obs_autor
-obs_metodos
-obs_frappuchin
-obs_frullatos 
-obs_sandwish  
-obs_tequenos  
-obs_panquecas 
-obs_waffles va
-obs_adicionale
-obs_croissants
-obs_postres*/
 
 
                          $areaMesas = new TbMesas();
@@ -303,7 +292,6 @@ obs_postres*/
             'adicionale'=> TbComandas::getAdicionale(),
             'croissants'=> TbComandas::getCroissants(),
             'postres'=> TbComandas::getPostres(),
-            'menu'=> TbComandas::getMenu(),
         ]);
     }
 
@@ -337,18 +325,21 @@ obs_postres*/
             $model->id_productos = implode(",", $ids);
             $model->ctd = implode(",", $ctd);
             $model->status = 0;
-            $model->obs_expressos = $_POST['obs_expressos'];
-            $model->obs_lattes = $_POST['obs_lattes'];
-            $model->obs_bfrias = $_POST['obs_bfrias'];
-            $model->obs_energy = $_POST['obs_energy'];
-            $model->obs_shake = $_POST['obs_shake'];
-            $model->obs_fruits = $_POST['obs_fruits'];
-            $model->obs_paninis = $_POST['obs_paninis'];
-            $model->obs_salads = $_POST['obs_salads'];
-            $model->obs_hotcakes = $_POST['obs_hotcakes'];
-            $model->obs_cakes = $_POST['obs_cakes'];
-            $model->obs_deserts = $_POST['obs_deserts'];                        
             $model->h_pedido = $_POST['h_pedido'];
+            $model->obs_clasicos   = $_POST['obs_clasicos'];
+            $model->obs_alinados   = $_POST['obs_alinados'];
+            $model->obs_especiales = $_POST['obs_especiales'];
+            $model->obs_autor = $_POST['obs_autor'];
+            $model->obs_metodos = $_POST['obs_metodos'];
+            $model->obs_frappuchinos = $_POST['obs_frappuchinos'];
+            $model->obs_frullatos  = $_POST['obs_frullatos'];
+            $model->obs_sandwish   = $_POST['obs_sandwish'];
+            $model->obs_tequenos   = $_POST['obs_tequenos'];
+            $model->obs_panquecas  = $_POST['obs_panquecas'];
+            $model->obs_waffles = $_POST['obs_waffles'];
+            $model->obs_adicionales = $_POST['obs_adicionales'];
+            $model->obs_croissants = $_POST['obs_croissants'];
+            $model->obs_postres = $_POST['obs_postres'];
             
             $model->save(false);
 
@@ -372,19 +363,22 @@ obs_postres*/
         }
         return $this->render('update', [
             'model' => $model,
-             'clientes'=> TbComandas::getClientes(),            
-             'expressos' => TbComandas::getExpressos(),
-             'lattes' => TbComandas::getLattes(),
-             'bfrias' => TbComandas::getBfrias(),
-             'energy' => TbComandas::getEnergy(),
-             'shake' => TbComandas::getShake(),
-             'fruits' => TbComandas::getFruits(),
-             'paninis' => TbComandas::getPaninis(),
-             'salads' => TbComandas::getSalads(),
-             'hotcakes' => TbComandas::getHotcakes(),
-             'cakes' => TbComandas::getCakes(),
-             'deserts' => TbComandas::getDeserts(),
-             'productosUpdate' => TbComandas::getProductosUpdate(),
+            'clientes'=> TbComandas::getClientes(), 
+            'clasicos'=> TbComandas::getClasicos (),
+            'alinados'=> TbComandas::getAlinados(),
+            'especiales'=> TbComandas::getEspeciales(),
+            'autor'=> TbComandas::getAutor(),
+            'metodos'=> TbComandas::getMetodos(),
+            'frappuchin'=> TbComandas::getFrappuchin(),
+            'frullatos'=> TbComandas::getFrullatos(),
+            'sandwishes'=> TbComandas::getSandwish(),
+            'tequenos'=> TbComandas::getTequenos(),
+            'panquecas'=> TbComandas::getPanquecas(),
+            'waffles'=> TbComandas::getWaffles(),
+            'adicionale'=> TbComandas::getAdicionale(),
+            'croissants'=> TbComandas::getCroissants(),
+            'postres'=> TbComandas::getPostres(),
+            'productosUpdate' => TbComandas::getProductosUpdate(),
         ]);
     }
 

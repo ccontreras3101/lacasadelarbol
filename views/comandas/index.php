@@ -122,40 +122,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class=" grid col-xs-1">
                             <h4>Obs.</h4>
+
                             <?php
-                                if($value['obs_expressos'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_expressos']."</span>";
-                                }
-                                if($value['obs_lattes'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_lattes']."</span>";
-                                }
-                                if($value['obs_bfrias'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_bfrias']."</span>";
-                                }
-                                if($value['obs_energy'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_energy']."</span>";
-                                }
-                                if($value['obs_shake'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_shake']."</span>";
-                                }
-                                if($value['obs_fruits'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_fruits']."</span>";
-                                }
-                                if($value['obs_paninis'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_paninis']."</span>";
-                                }
-                                if($value['obs_salads'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_salads']."</span>";
-                                }
-                                if($value['obs_hotcakes'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_hotcakes']."</span>";
-                                }
-                                if($value['obs_cakes'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_cakes']."</span>";
-                                }
-                                if($value['obs_deserts'] != ""){
-                                    echo "<span class=obs_ >" .$value['obs_deserts']."</span>";
-                                }
+
+                            if($value['obs_clasicos'] != ""){echo "<span class=obs_>".$value['obs_clasicos']."</span>";}
+                            if($value['obs_alinados'] != ""){echo "<span class=obs_>".$value['obs_alinados']."</span>";}
+                            if($value['obs_especiales'] != ""){echo "<span class=obs_>".$value['obs_especiales']."</span>";}
+                            if($value['obs_autor'] != ""){echo "<span class=obs_>".$value['obs_autor']."</span>";}
+                            if($value['obs_metodos'] != ""){echo "<span class=obs_>".$value['obs_metodos']."</span>";}
+                            if($value['obs_frappuchinos'] != ""){echo "<span class=obs_>".$value['obs_frappuchinos']."</span>";}
+                            if($value['obs_frullatos'] != ""){echo "<span class=obs_>".$value['obs_frullatos']."</span>";}
+                            if($value['obs_sandwish'] != ""){echo "<span class=obs_>".$value['obs_sandwish']."</span>";}
+                            if($value['obs_tequenos'] != ""){echo "<span class=obs_>".$value['obs_tequenos']."</span>";}
+                            if($value['obs_panquecas'] != ""){echo "<span class=obs_>".$value['obs_panquecas']."</span>";}
+                            if($value['obs_waffles'] != ""){echo "<span class=obs_>".$value['obs_waffles']."</span>";}
+                            if($value['obs_adicionales'] != ""){echo "<span class=obs_>".$value['obs_adicionales']."</span>";}
+                            if($value['obs_croissants'] != ""){echo "<span class=obs_>".$value['obs_croissants']."</span>";}
+                            if($value['obs_postres'] != ""){echo "<span class=obs_>".$value['obs_postres']."</span>";}
 
                             ?>
                         </div>

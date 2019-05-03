@@ -424,30 +424,30 @@ use yii\web\JsExpression;
                     <th>Pedido</th>
                 </tr>
                     <?php  
-                        foreach ($sandwish as $key => $sandwish_) {
+                        foreach ($sandwishes as $key => $sandwish) {
                     ?>
                 <tr>
                         <td><!-- Producto -->
-                            <?php  echo($sandwish_->producto) ?>
+                            <?php  echo($sandwish->producto) ?>
                         </td>
                         <!-- Botones e Input-->
                         
-                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($sandwish_->id) ?>" id="ctd<?php echo($sandwish_->id) ?>" placeholder="0" class="form-control rigth">
-                            <input type="hidden" name="area<?php echo($sandwish_->id) ?>" id="area<?php echo($sandwish_->id) ?>" value="<?php echo($sandwish_->area) ?>"></td>
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($sandwish->id) ?>" id="ctd<?php echo($sandwish->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($sandwish->id) ?>" id="area<?php echo($sandwish->id) ?>" value="<?php echo($sandwish->area) ?>"></td>
                         
                     <?php 
                         $this->registerJs('
-                            var i'.$sandwish_->id.' = 0;
-                            $("#inc'.$sandwish_->id.'"  ).click(function(){ 
-                                i'.$sandwish_->id.'++;
-                                if(i'.$sandwish_->id.' >= 0){
-                                    $("#ctd'.$sandwish_->id.'").val(i'.$sandwish_->id.');
+                            var i'.$sandwish->id.' = 0;
+                            $("#inc'.$sandwish->id.'"  ).click(function(){ 
+                                i'.$sandwish->id.'++;
+                                if(i'.$sandwish->id.' >= 0){
+                                    $("#ctd'.$sandwish->id.'").val(i'.$sandwish->id.');
                                 }
                             });
-                            $("#dec'.$sandwish_->id.'"  ).click(function(){ 
-                                i'.$sandwish_->id.'--;
-                                if(i'.$sandwish_->id.' >= 0){
-                                    $("#ctd'.$sandwish_->id.'").val(i'.$sandwish_->id.');
+                            $("#dec'.$sandwish->id.'"  ).click(function(){ 
+                                i'.$sandwish->id.'--;
+                                if(i'.$sandwish->id.' >= 0){
+                                    $("#ctd'.$sandwish->id.'").val(i'.$sandwish->id.');
                                 }
                             });
                         ');
@@ -651,7 +651,7 @@ use yii\web\JsExpression;
                 <tr>
                     <td colspan="2" class="tooltip_">
                         <span class="tooltiptext">Incluya las Observaciones</span>
-                        <input type="text" placeholder="Observaciones" name="obs_adicionale_s"  id="obs_adicionale_s" class="form-control">
+                        <input type="text" placeholder="Observaciones" name="obs_adicionales"  id="obs_adicionales" class="form-control">
                     </td>
                 </tr>
             </table>     

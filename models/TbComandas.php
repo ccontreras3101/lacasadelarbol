@@ -58,7 +58,7 @@ class TbComandas extends \yii\db\ActiveRecord
         return [
             [['id_productos', 'ctd', 'id_usuario', 'id_mesa',/* 'id_cliente',*/ 'status', 'cedula_cliente'], 'required'],
             [['id_productos', 'ctd', 'id_usuario', 'id_mesa'], 'integer'],
-            [['id_productos','ctd','id_usuario','id_mesa','id_cliente','status','status_cafe','status_cocina','obs_expressos','obs_lattes','obs_bfrias','obs_energy','obs_shake','obs_fruits','obs_paninis','obs_salads','obs_hotcakes','obs_cakes','obs_deserts' ,'h_pedido','h_entrega',], 'safe'],
+            [['id_productos','ctd','id_usuario','id_mesa','id_cliente','status','status_cafe','status_cocina','obs_clasicos','obs_alinados','obs_especiales','obs_autor','obs_metodos','obs_frappuchinos','obs_frullatos','obs_sandwish','obs_tequenos','obs_panquecas','obs_waffles','obs_adicionales','obs_croissants','obs_postres' ,'h_pedido','h_entrega',], 'safe'],
             [['status'], 'string', 'max' => 1],
             [['id_productos'], 'unique'],
             [['id_usuario'], 'unique'],
@@ -84,17 +84,20 @@ class TbComandas extends \yii\db\ActiveRecord
             'status' => 'Status',
             'status_cafe' => 'Observaciones',
             'status_cocina' => 'Observaciones',
-            'obs_expressos'=> 'Observaciones',
-            'obs_lattes'=> 'Observaciones',
-            'obs_bfrias'=> 'Observaciones',
-            'obs_energy'=> 'Observaciones',
-            'obs_shake'=> 'Observaciones',
-            'obs_fruits'=> 'Observaciones',
-            'obs_paninis'=> 'Observaciones',
-            'obs_salads'=> 'Observaciones',
-            'obs_hotcakes'=> 'Observaciones',
-            'obs_cakes'=> 'Observaciones',
-            'obs_deserts'=> 'Observaciones',
+            'obs_clasicos' => 'Observaciones',
+            'obs_alinados' => 'Observaciones',
+            'obs_especiales' => 'Observaciones',
+            'obs_autor' => 'Observaciones',
+            'obs_metodos' => 'Observaciones',
+            'obs_frappuchinos' => 'Observaciones',
+            'obs_frullatos' => 'Observaciones',
+            'obs_sandwish' => 'Observaciones',
+            'obs_tequenos' => 'Observaciones',
+            'obs_panquecas' => 'Observaciones',
+            'obs_waffles' => 'Observaciones',
+            'obs_adicionales' => 'Observaciones',
+            'obs_croissants' => 'Observaciones',
+            'obs_postres' => 'Observaciones',
             'h_pedido' => 'Observaciones',
             'h_entrega' => 'Observaciones',
         ];
@@ -171,7 +174,7 @@ class TbComandas extends \yii\db\ActiveRecord
      */
     public function getProductosUpdate()
     {
-        return TbComandas::find()->where(['id' => $_GET['id']])->all();
+        return TbComandas::find()->where(['id' => $_GET['id']])->All();
     }
 
     /**
@@ -222,7 +225,7 @@ class TbComandas extends \yii\db\ActiveRecord
     }
     public static function getSandwish()
     {
-        return TbProductos::find()->where(['grupo' => 'sandwish'])->All();
+        return TbProductos::find()->where(['grupo' => 'sandwiches'])->All();
     }
     public static function getTequenos()
     {
@@ -248,12 +251,7 @@ class TbComandas extends \yii\db\ActiveRecord
     {
         return TbProductos::find()->where(['grupo' => 'postres'])->All();
     }
-    public static function getMenu()
-    {
-        return TbProductos::find()->All();
-    }
-
-    
+       
 }
 
 
