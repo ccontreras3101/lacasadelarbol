@@ -60,556 +60,701 @@ use yii\web\JsExpression;
                 ?>    
         </div>
     </div>
-        <div class="row">
-            <!--Expressos-->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Expressos</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($expressos as $key => $expresso) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($expresso->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
+    <div class="row">
+        <!--Expressos-->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Menu</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($clasicos as $key => $clasico) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($clasico->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($clasico->id) ?>" id="ctd<?php echo($clasico->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($clasico->id) ?>" id="area<?php echo($clasico->id) ?>" value="<?php echo($clasico->area) ?>" ></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var va'.$clasico->id.' = $("#ctd'.$clasico->id.'").val();
+                            var x'.$clasico->id.' =  0;
+                            var i'.$clasico->id.' = 0;
                             
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($expresso->id) ?>" id="ctd<?php echo($expresso->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($expresso->id) ?>" id="area<?php echo($expresso->id) ?>" value="<?php echo($expresso->area) ?>" ></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var va'.$expresso->id.' = $("#ctd'.$expresso->id.'").val();
-                                var x'.$expresso->id.' =  0;
-                                var i'.$expresso->id.' = 0;
+                            $("#ctd'.$clasico->id.'").change(function(){
+                                var x'.$clasico->id.' =  1;
+                                return (x'.$clasico->id.');
+                            });
+
+                            $("#inc'.$clasico->id.'"  ).click(function(){ 
+                                i'.$clasico->id.'++;
+                                if(i'.$clasico->id.' >= 0){
+                                    $("#ctd'.$clasico->id.'").val(i'.$clasico->id.');
+                                }
+                                if(x'.$clasico->id.' =  1){
+                                    $("#ctd'.$clasico->id.'").val(va'.$clasico->id.' +  i'.$clasico->id.');
+                                }
+
+                            });
+
+                            $("#dec'.$clasico->id.'"  ).click(function(){ 
+                                i'.$clasico->id.'--;
+                                if(i'.$clasico->id.' >= 0){
+                                    $("#ctd'.$clasico->id.'").val(i'.$clasico->id.');
+                                }
                                 
-                                $("#ctd'.$expresso->id.'").change(function(){
-                                    var x'.$expresso->id.' =  1;
-                                    return (x'.$expresso->id.');
-                                });
+                            });
+                        ');
+                       } //end foreach clasicos
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_clasicos" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!--end expressos-->
+        <!-- Lattes-->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Aliñados</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($alinados as $key => $alinado) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($alinado->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($alinado->id) ?>" id="ctd<?php echo($alinado->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($alinado->id) ?>" id="area<?php echo($alinado->id) ?>" value="<?php echo($alinado->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$alinado->id.' = 0;
+                            $("#inc'.$alinado->id.'"  ).click(function(){ 
+                                i'.$alinado->id.'++;
+                                if(i'.$alinado->id.' >= 0){
+                                    $("#ctd'.$alinado->id.'").val(i'.$alinado->id.');
+                                }
+                            });
+                            $("#dec'.$alinado->id.'"  ).click(function(){ 
+                                i'.$alinado->id.'--;
+                                if(i'.$alinado->id.' >= 0){
+                                    $("#ctd'.$alinado->id.'").val(i'.$alinado->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach especiales
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_alinados"  id="obs_alinados" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!--end especiales -->
+        <!-- Bedidas Frias -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Especiales</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($especiales as $key => $especial) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($especial->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($especial->id) ?>" id="ctd<?php echo($especial->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($especial->id) ?>" id="area<?php echo($especial->id) ?>" value="<?php echo($especial->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$especial->id.' = 0;
+                            $("#inc'.$especial->id.'"  ).click(function(){ 
+                                i'.$especial->id.'++;
+                                if(i'.$especial->id.' >= 0){
+                                    $("#ctd'.$especial->id.'").val(i'.$especial->id.');
+                                }
+                            });
+                            $("#dec'.$especial->id.'"  ).click(function(){ 
+                                i'.$especial->id.'--;
+                                if(i'.$especial->id.' >= 0){
+                                    $("#ctd'.$especial->id.'").val(i'.$especial->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach aliñados
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_especiales"  id="obs_especiales" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- end bebidas Bedidas Frias -->
+    </div>
+    <div class="row">
+        <!-- Energy -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Autor</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($autor as $key => $autor_) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($autor_->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($autor_->id) ?>" id="ctd<?php echo($autor_->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($autor_->id) ?>" id="area<?php echo($autor_->id) ?>" value="<?php echo($autor_->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$autor_->id.' = 0;
+                            $("#inc'.$autor_->id.'"  ).click(function(){ 
+                                i'.$autor_->id.'++;
+                                if(i'.$autor_->id.' >= 0){
+                                    $("#ctd'.$autor_->id.'").val(i'.$autor_->id.');
+                                }
+                            });
+                            $("#dec'.$autor_->id.'"  ).click(function(){ 
+                                i'.$autor_->id.'--;
+                                if(i'.$autor_->id.' >= 0){
+                                    $("#ctd'.$autor_->id.'").val(i'.$autor_->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach autor
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_autor"  id="obs_autor" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Energy -->
+        <!-- Malteadas -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Metodos</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($metodos as $key => $metodo) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($metodo->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($metodo->id) ?>" id="ctd<?php echo($metodo->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($metodo->id) ?>" id="area<?php echo($metodo->id) ?>" value="<?php echo($metodo->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$metodo->id.' = 0;
+                            $("#inc'.$metodo->id.'"  ).click(function(){ 
+                                i'.$metodo->id.'++;
+                                if(i'.$metodo->id.' >= 0){
+                                    $("#ctd'.$metodo->id.'").val(i'.$metodo->id.');
+                                }
+                            });
+                            $("#dec'.$metodo->id.'"  ).click(function(){ 
+                                i'.$metodo->id.'--;
+                                if(i'.$metodo->id.' >= 0){
+                                    $("#ctd'.$metodo->id.'").val(i'.$metodo->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach metodos
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_metodos"  id="obs_metodos" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- end Malteadas-->
+        <!--Merengadas de Frutas -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Frappuchinos</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($frappuchin as $key => $frappuchin_) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($frappuchin_->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($frappuchin_->id) ?>" id="ctd<?php echo($frappuchin_->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($frappuchin_->id) ?>" id="area<?php echo($frappuchin_->id) ?>" value="<?php echo($frappuchin_->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$frappuchin_->id.' = 0;
+                            $("#inc'.$frappuchin_->id.'"  ).click(function(){ 
+                                i'.$frappuchin_->id.'++;
+                                if(i'.$frappuchin_->id.' >= 0){
+                                    $("#ctd'.$frappuchin_->id.'").val(i'.$frappuchin_->id.');
+                                }
+                            });
+                            $("#dec'.$frappuchin_->id.'"  ).click(function(){ 
+                                i'.$frappuchin_->id.'--;
+                                if(i'.$frappuchin_->id.' >= 0){
+                                    $("#ctd'.$frappuchin_->id.'").val(i'.$frappuchin_->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach frappuchinos
+                    ?>
+                </tr>
+                <tr>
+                   <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_frappuchinos"  id="obs_frappuchinos" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Merengadas de Frutas -->
+    </div><!-- div class row -->
+    <div class="row">
+        <!-- Paninis -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Frullatos</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($frullatos as $key => $frullato) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($frullato->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($frullato->id) ?>" id="ctd<?php echo($frullato->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($frullato->id) ?>" id="area<?php echo($frullato->id) ?>" value="<?php echo($frullato->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$frullato->id.' = 0;
+                            $("#inc'.$frullato->id.'"  ).click(function(){ 
+                                i'.$frullato->id.'++;
+                                if(i'.$frullato->id.' >= 0){
+                                    $("#ctd'.$frullato->id.'").val(i'.$frullato->id.');
+                                }
+                            });
+                            $("#dec'.$frullato->id.'"  ).click(function(){ 
+                                i'.$frullato->id.'--;
+                                if(i'.$frullato->id.' >= 0){
+                                    $("#ctd'.$frullato->id.'").val(i'.$frullato->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach frullatos
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_frullatos"  id="obs_frullatos" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Paninis -->
+         <!--Ensandwish_as -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Sandwish</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($sandwish as $key => $sandwish_) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($sandwish_->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($sandwish_->id) ?>" id="ctd<?php echo($sandwish_->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($sandwish_->id) ?>" id="area<?php echo($sandwish_->id) ?>" value="<?php echo($sandwish_->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$sandwish_->id.' = 0;
+                            $("#inc'.$sandwish_->id.'"  ).click(function(){ 
+                                i'.$sandwish_->id.'++;
+                                if(i'.$sandwish_->id.' >= 0){
+                                    $("#ctd'.$sandwish_->id.'").val(i'.$sandwish_->id.');
+                                }
+                            });
+                            $("#dec'.$sandwish_->id.'"  ).click(function(){ 
+                                i'.$sandwish_->id.'--;
+                                if(i'.$sandwish_->id.' >= 0){
+                                    $("#ctd'.$sandwish_->id.'").val(i'.$sandwish_->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_sandwish"  id="obs_sandwish" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Ensandwish_as -->
+        <!-- Panpanquecas -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Tequeños</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($tequenos as $key => $tequeno) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($tequeno->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($tequeno->id) ?>" id="ctd<?php echo($tequeno->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($tequeno->id) ?>" id="area<?php echo($tequeno->id) ?>" value="<?php echo($tequeno->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$tequeno->id.' = 0;
+                            $("#inc'.$tequeno->id.'"  ).click(function(){ 
+                                i'.$tequeno->id.'++;
+                                if(i'.$tequeno->id.' >= 0){
+                                    $("#ctd'.$tequeno->id.'").val(i'.$tequeno->id.');
+                                }
+                            });
+                            $("#dec'.$tequeno->id.'"  ).click(function(){ 
+                                i'.$tequeno->id.'--;
+                                if(i'.$tequeno->id.' >= 0){
+                                    $("#ctd'.$tequeno->id.'").val(i'.$tequeno->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach sandwish
+                    ?>
+                </tr>
+                <tr>
+                   <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_tequenos"  id="obs_tequenos" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Panpanquecas -->  
+    </div>
+    <div class="row">
+        <!--Tortas -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Panquecas</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($panquecas as $key => $panqueca) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($panqueca->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($panqueca->id) ?>" id="ctd<?php echo($panqueca->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($panqueca->id) ?>" id="area<?php echo($panqueca->id) ?>" value="<?php echo($panqueca->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$panqueca->id.' = 0;
+                            $("#inc'.$panqueca->id.'"  ).click(function(){ 
+                                i'.$panqueca->id.'++;
+                                if(i'.$panqueca->id.' >= 0){
+                                    $("#ctd'.$panqueca->id.'").val(i'.$panqueca->id.');
+                                }
+                            });
+                            $("#dec'.$panqueca->id.'"  ).click(function(){ 
+                                i'.$panqueca->id.'--;
+                                if(i'.$panqueca->id.' >= 0){
+                                    $("#ctd'.$panqueca->id.'").val(i'.$panqueca->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_panquecas"  id="obs_panquecas" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Tortas -->
+        <!-- Postres -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Waffles</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($waffles as $key => $waffle) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($waffle->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($waffle->id) ?>" id="ctd<?php echo($waffle->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($waffle->id) ?>" id="area<?php echo($waffle->id) ?>" value="<?php echo($waffle->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$waffle->id.' = 0;
+                            $("#inc'.$waffle->id.'"  ).click(function(){ 
+                                i'.$waffle->id.'++;
+                                if(i'.$waffle->id.' >= 0){
+                                    $("#ctd'.$waffle->id.'").val(i'.$waffle->id.');
+                                }
+                            });
+                            $("#dec'.$waffle->id.'"  ).click(function(){ 
+                                i'.$waffle->id.'--;
+                                if(i'.$waffle->id.' >= 0){
+                                    $("#ctd'.$waffle->id.'").val(i'.$waffle->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_waffles"  id="obs_waffles" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Postres -->
+         <!-- Postres -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Adicionales</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($adicionale as $key => $adicionale_) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($adicionale_->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($adicionale_->id) ?>" id="ctd<?php echo($adicionale_->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($adicionale_->id) ?>" id="area<?php echo($adicionale_->id) ?>" value="<?php echo($adicionale_->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$adicionale_->id.' = 0;
+                            $("#inc'.$adicionale_->id.'"  ).click(function(){ 
+                                i'.$adicionale_->id.'++;
+                                if(i'.$adicionale_->id.' >= 0){
+                                    $("#ctd'.$adicionale_->id.'").val(i'.$adicionale_->id.');
+                                }
+                            });
+                            $("#dec'.$adicionale_->id.'"  ).click(function(){ 
+                                i'.$adicionale_->id.'--;
+                                if(i'.$adicionale_->id.' >= 0){
+                                    $("#ctd'.$adicionale_->id.'").val(i'.$adicionale_->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_adicionale_s"  id="obs_adicionale_s" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Postres -->
+        <!-- Postres -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Croissants</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($croissants as $key => $croissant) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($croissant->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($croissant->id) ?>" id="ctd<?php echo($croissant->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($croissant->id) ?>" id="area<?php echo($croissant->id) ?>" value="<?php echo($croissant->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$croissant->id.' = 0;
+                            $("#inc'.$croissant->id.'"  ).click(function(){ 
+                                i'.$croissant->id.'++;
+                                if(i'.$croissant->id.' >= 0){
+                                    $("#ctd'.$croissant->id.'").val(i'.$croissant->id.');
+                                }
+                            });
+                            $("#dec'.$croissant->id.'"  ).click(function(){ 
+                                i'.$croissant->id.'--;
+                                if(i'.$croissant->id.' >= 0){
+                                    $("#ctd'.$croissant->id.'").val(i'.$croissant->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_croissants"  id="obs_croissants" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Postres -->
+        <!-- Postres -->
+        <div class="col-md-12 bg-respoteria">
+            <h2 class="respoteria">Postres</h2>
+            <table class="table table-bordered table-comanda">
+                <tr>
+                    <th>Producto</th>
+                    <th>Pedido</th>
+                </tr>
+                    <?php  
+                        foreach ($postres as $key => $postre) {
+                    ?>
+                <tr>
+                        <td><!-- Producto -->
+                            <?php  echo($postre->producto) ?>
+                        </td>
+                        <!-- Botones e Input-->
+                        
+                        <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($postre->id) ?>" id="ctd<?php echo($postre->id) ?>" placeholder="0" class="form-control rigth">
+                            <input type="hidden" name="area<?php echo($postre->id) ?>" id="area<?php echo($postre->id) ?>" value="<?php echo($postre->area) ?>"></td>
+                        
+                    <?php 
+                        $this->registerJs('
+                            var i'.$postre->id.' = 0;
+                            $("#inc'.$postre->id.'"  ).click(function(){ 
+                                i'.$postre->id.'++;
+                                if(i'.$postre->id.' >= 0){
+                                    $("#ctd'.$postre->id.'").val(i'.$postre->id.');
+                                }
+                            });
+                            $("#dec'.$postre->id.'"  ).click(function(){ 
+                                i'.$postre->id.'--;
+                                if(i'.$postre->id.' >= 0){
+                                    $("#ctd'.$postre->id.'").val(i'.$postre->id.');
+                                }
+                            });
+                        ');
+                       } //end foreach panquecas
+                    ?>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tooltip_">
+                        <span class="tooltiptext">Incluya las Observaciones</span>
+                        <input type="text" placeholder="Observaciones" name="obs_postres"  id="obs_postres" class="form-control">
+                    </td>
+                </tr>
+            </table>     
+        </div><!-- div class col-md-12 -->
+        <!-- End Postres -->
 
-                                $("#inc'.$expresso->id.'"  ).click(function(){ 
-                                    i'.$expresso->id.'++;
-                                    if(i'.$expresso->id.' >= 0){
-                                        $("#ctd'.$expresso->id.'").val(i'.$expresso->id.');
-                                    }
-                                    if(x'.$expresso->id.' =  1){
-                                        $("#ctd'.$expresso->id.'").val(va'.$expresso->id.' +  i'.$expresso->id.');
-                                    }
-    
-                                });
-
-                                $("#dec'.$expresso->id.'"  ).click(function(){ 
-                                    i'.$expresso->id.'--;
-                                    if(i'.$expresso->id.' >= 0){
-                                        $("#ctd'.$expresso->id.'").val(i'.$expresso->id.');
-                                    }
-                                    
-                                });
-                            ');
-                           } //end foreach clasicos
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_expressos"  id="obs_expressos" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!--end expressos-->
-            <!-- Lattes-->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Lattes</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($lattes as $key => $latte) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($latte->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($latte->id) ?>" id="ctd<?php echo($latte->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($latte->id) ?>" id="area<?php echo($latte->id) ?>" value="<?php echo($latte->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$latte->id.' = 0;
-                                $("#inc'.$latte->id.'"  ).click(function(){ 
-                                    i'.$latte->id.'++;
-                                    if(i'.$latte->id.' >= 0){
-                                        $("#ctd'.$latte->id.'").val(i'.$latte->id.');
-                                    }
-                                });
-                                $("#dec'.$latte->id.'"  ).click(function(){ 
-                                    i'.$latte->id.'--;
-                                    if(i'.$latte->id.' >= 0){
-                                        $("#ctd'.$latte->id.'").val(i'.$latte->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach especiales
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_lattes"  id="obs_lattes" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!--end especiales -->
-            <!-- Bedidas Frias -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Bedidas Frias</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($bfrias as $key => $bfria) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($bfria->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($bfria->id) ?>" id="ctd<?php echo($bfria->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($bfria->id) ?>" id="area<?php echo($bfria->id) ?>" value="<?php echo($bfria->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$bfria->id.' = 0;
-                                $("#inc'.$bfria->id.'"  ).click(function(){ 
-                                    i'.$bfria->id.'++;
-                                    if(i'.$bfria->id.' >= 0){
-                                        $("#ctd'.$bfria->id.'").val(i'.$bfria->id.');
-                                    }
-                                });
-                                $("#dec'.$bfria->id.'"  ).click(function(){ 
-                                    i'.$bfria->id.'--;
-                                    if(i'.$bfria->id.' >= 0){
-                                        $("#ctd'.$bfria->id.'").val(i'.$bfria->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach aliñados
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_bfrias"  id="obs_bfrias" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- end bebidas Bedidas Frias -->
-        </div>
-        <div class="row">
-            <!-- Energy -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Energy</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($energy as $key => $energy_) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($energy_->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($energy_->id) ?>" id="ctd<?php echo($energy_->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($energy_->id) ?>" id="area<?php echo($energy_->id) ?>" value="<?php echo($energy_->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$energy_->id.' = 0;
-                                $("#inc'.$energy_->id.'"  ).click(function(){ 
-                                    i'.$energy_->id.'++;
-                                    if(i'.$energy_->id.' >= 0){
-                                        $("#ctd'.$energy_->id.'").val(i'.$energy_->id.');
-                                    }
-                                });
-                                $("#dec'.$energy_->id.'"  ).click(function(){ 
-                                    i'.$energy_->id.'--;
-                                    if(i'.$energy_->id.' >= 0){
-                                        $("#ctd'.$energy_->id.'").val(i'.$energy_->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach autor
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_energy"  id="obs_energy" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Energy -->
-            <!-- Malteadas -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Malteadas</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($shake as $key => $shake_) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($shake_->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($shake_->id) ?>" id="ctd<?php echo($shake_->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($shake_->id) ?>" id="area<?php echo($shake_->id) ?>" value="<?php echo($shake_->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$shake_->id.' = 0;
-                                $("#inc'.$shake_->id.'"  ).click(function(){ 
-                                    i'.$shake_->id.'++;
-                                    if(i'.$shake_->id.' >= 0){
-                                        $("#ctd'.$shake_->id.'").val(i'.$shake_->id.');
-                                    }
-                                });
-                                $("#dec'.$shake_->id.'"  ).click(function(){ 
-                                    i'.$shake_->id.'--;
-                                    if(i'.$shake_->id.' >= 0){
-                                        $("#ctd'.$shake_->id.'").val(i'.$shake_->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach metodos
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_shake"  id="obs_shake" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- end Malteadas-->
-            <!--Merengadas de Frutas -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Merengadas de Frutas</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($fruits as $key => $fruit) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($fruit->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($fruit->id) ?>" id="ctd<?php echo($fruit->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($fruit->id) ?>" id="area<?php echo($fruit->id) ?>" value="<?php echo($fruit->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$fruit->id.' = 0;
-                                $("#inc'.$fruit->id.'"  ).click(function(){ 
-                                    i'.$fruit->id.'++;
-                                    if(i'.$fruit->id.' >= 0){
-                                        $("#ctd'.$fruit->id.'").val(i'.$fruit->id.');
-                                    }
-                                });
-                                $("#dec'.$fruit->id.'"  ).click(function(){ 
-                                    i'.$fruit->id.'--;
-                                    if(i'.$fruit->id.' >= 0){
-                                        $("#ctd'.$fruit->id.'").val(i'.$fruit->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach frappuchinos
-                        ?>
-                    </tr>
-                    <tr>
-                       <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_fruits"  id="obs_fruits" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Merengadas de Frutas -->
-        </div><!-- div class row -->
-        <div class="row">
-            <!-- Paninis -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Paninis</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($paninis as $key => $panini) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($panini->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($panini->id) ?>" id="ctd<?php echo($panini->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($panini->id) ?>" id="area<?php echo($panini->id) ?>" value="<?php echo($panini->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$panini->id.' = 0;
-                                $("#inc'.$panini->id.'"  ).click(function(){ 
-                                    i'.$panini->id.'++;
-                                    if(i'.$panini->id.' >= 0){
-                                        $("#ctd'.$panini->id.'").val(i'.$panini->id.');
-                                    }
-                                });
-                                $("#dec'.$panini->id.'"  ).click(function(){ 
-                                    i'.$panini->id.'--;
-                                    if(i'.$panini->id.' >= 0){
-                                        $("#ctd'.$panini->id.'").val(i'.$panini->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach frullatos
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_paninis"  id="obs_paninis" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Paninis -->
-             <!--Ensaladas -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Ensaladas</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($salads as $key => $salad) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($salad->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($salad->id) ?>" id="ctd<?php echo($salad->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($salad->id) ?>" id="area<?php echo($salad->id) ?>" value="<?php echo($salad->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$salad->id.' = 0;
-                                $("#inc'.$salad->id.'"  ).click(function(){ 
-                                    i'.$salad->id.'++;
-                                    if(i'.$salad->id.' >= 0){
-                                        $("#ctd'.$salad->id.'").val(i'.$salad->id.');
-                                    }
-                                });
-                                $("#dec'.$salad->id.'"  ).click(function(){ 
-                                    i'.$salad->id.'--;
-                                    if(i'.$salad->id.' >= 0){
-                                        $("#ctd'.$salad->id.'").val(i'.$salad->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach cakes
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_salads"  id="obs_salads" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Ensaladas -->
-            <!-- Pancakes -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Pancakes</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($hotcakes as $key => $hotcake) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($hotcake->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($hotcake->id) ?>" id="ctd<?php echo($hotcake->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($hotcake->id) ?>" id="area<?php echo($hotcake->id) ?>" value="<?php echo($hotcake->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$hotcake->id.' = 0;
-                                $("#inc'.$hotcake->id.'"  ).click(function(){ 
-                                    i'.$hotcake->id.'++;
-                                    if(i'.$hotcake->id.' >= 0){
-                                        $("#ctd'.$hotcake->id.'").val(i'.$hotcake->id.');
-                                    }
-                                });
-                                $("#dec'.$hotcake->id.'"  ).click(function(){ 
-                                    i'.$hotcake->id.'--;
-                                    if(i'.$hotcake->id.' >= 0){
-                                        $("#ctd'.$hotcake->id.'").val(i'.$hotcake->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach sandwish
-                        ?>
-                    </tr>
-                    <tr>
-                       <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_hotcakes"  id="obs_hotcakes" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Pancakes -->  
-        </div>
-        <div class="row">
-            <!--Tortas -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Tortas</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($cakes as $key => $cake) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($cake->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($cake->id) ?>" id="ctd<?php echo($cake->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($cake->id) ?>" id="area<?php echo($cake->id) ?>" value="<?php echo($cake->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$cake->id.' = 0;
-                                $("#inc'.$cake->id.'"  ).click(function(){ 
-                                    i'.$cake->id.'++;
-                                    if(i'.$cake->id.' >= 0){
-                                        $("#ctd'.$cake->id.'").val(i'.$cake->id.');
-                                    }
-                                });
-                                $("#dec'.$cake->id.'"  ).click(function(){ 
-                                    i'.$cake->id.'--;
-                                    if(i'.$cake->id.' >= 0){
-                                        $("#ctd'.$cake->id.'").val(i'.$cake->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach cakes
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_cakes"  id="obs_cakes" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Tortas -->
-            <!-- Postres -->
-            <div class="col-md-12 bg-respoteria">
-                <h2 class="respoteria">Postres</h2>
-                <table class="table table-bordered table-comanda">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Pedido</th>
-                    </tr>
-                        <?php  
-                            foreach ($deserts as $key => $desert) {
-                        ?>
-                    <tr>
-                            <td><!-- Producto -->
-                                <?php  echo($desert->producto) ?>
-                            </td>
-                            <!-- Botones e Input-->
-                            
-                            <td class="input-value"><input type="number"  min="0" name="ctd<?php echo($desert->id) ?>" id="ctd<?php echo($desert->id) ?>" placeholder="0" class="form-control rigth">
-                                <input type="hidden" name="area<?php echo($desert->id) ?>" id="area<?php echo($desert->id) ?>" value="<?php echo($desert->area) ?>"></td>
-                            
-                        <?php 
-                            $this->registerJs('
-                                var i'.$desert->id.' = 0;
-                                $("#inc'.$desert->id.'"  ).click(function(){ 
-                                    i'.$desert->id.'++;
-                                    if(i'.$desert->id.' >= 0){
-                                        $("#ctd'.$desert->id.'").val(i'.$desert->id.');
-                                    }
-                                });
-                                $("#dec'.$desert->id.'"  ).click(function(){ 
-                                    i'.$desert->id.'--;
-                                    if(i'.$desert->id.' >= 0){
-                                        $("#ctd'.$desert->id.'").val(i'.$desert->id.');
-                                    }
-                                });
-                            ');
-                           } //end foreach panquecas
-                        ?>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tooltip_">
-                            <span class="tooltiptext">Incluya las Observaciones</span>
-                            <input type="text" placeholder="Observaciones" name="obs_deserts"  id="obs_deserts" class="form-control">
-                        </td>
-                    </tr>
-                </table>     
-            </div><!-- div class col-md-12 -->
-            <!-- End Postres -->
-        </div><!-- row -->
+    </div><!-- row -->
 
     <div class="form-group button-send">
         <?= Html::submitButton(Yii::t('app', 'Enviar'), ['class' => 'btn btn_custom']) ?>

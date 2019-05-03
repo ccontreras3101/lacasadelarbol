@@ -249,6 +249,21 @@ class ComandasController extends Controller
                             $cafe->h_pedido = $_POST['h_pedido'];
                             $cafe->save(false);
 
+                            /*obs_clasicos  
+obs_alinados  
+obs_especiales
+obs_autor
+obs_metodos
+obs_frappuchin
+obs_frullatos 
+obs_sandwish  
+obs_tequenos  
+obs_panquecas 
+obs_waffles va
+obs_adicionale
+obs_croissants
+obs_postres*/
+
 
                          $areaMesas = new TbMesas();
                             $areaMesas->id_comanda =  $cafe->id;
@@ -273,19 +288,22 @@ class ComandasController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'clientes'=> TbComandas::getClientes(),            
-             'expressos' => TbComandas::getExpressos(),
-             'lattes' => TbComandas::getLattes(),
-             'bfrias' => TbComandas::getBfrias(),
-             'energy' => TbComandas::getEnergy(),
-             'shake' => TbComandas::getShake(),
-             'fruits' => TbComandas::getFruits(),
-             'paninis' => TbComandas::getPaninis(),
-             'salads' => TbComandas::getSalads(),
-             'hotcakes' => TbComandas::getHotcakes(),
-             'cakes' => TbComandas::getCakes(),
-             'deserts' => TbComandas::getDeserts(),
-
+            'clientes'=> TbComandas::getClientes(), 
+            'clasicos'=> TbComandas::getClasicos (),
+            'alinados'=> TbComandas::getAlinados(),
+            'especiales'=> TbComandas::getEspeciales(),
+            'autor'=> TbComandas::getAutor(),
+            'metodos'=> TbComandas::getMetodos(),
+            'frappuchin'=> TbComandas::getFrappuchin(),
+            'frullatos'=> TbComandas::getFrullatos(),
+            'sandwish'=> TbComandas::getSandwish(),
+            'tequenos'=> TbComandas::getTequenos(),
+            'panquecas'=> TbComandas::getPanquecas(),
+            'waffles'=> TbComandas::getWaffles(),
+            'adicionale'=> TbComandas::getAdicionale(),
+            'croissants'=> TbComandas::getCroissants(),
+            'postres'=> TbComandas::getPostres(),
+            'menu'=> TbComandas::getMenu(),
         ]);
     }
 

@@ -33,17 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model,
  		'clientes'=>$clientes,
-        'expressos' => $expressos,
-        'lattes' => $lattes,
-        'bfrias' => $bfrias,
-        'energy' => $energy,
-        'shake' => $shake,
-        'fruits' => $fruits,
-        'paninis' => $paninis,
-        'salads' => $salads,
-        'hotcakes' => $hotcakes,
-        'cakes' => $cakes,
-        'deserts' => $deserts,
+        'clasicos' => $clasicos,
+        'alinados' => $alinados,
+        'especiales' => $especiales,
+        'autor' => $autor,
+        'metodos' => $metodos,
+        'frappuchin' => $frappuchin,
+        'frullatos' => $frullatos,
+        'sandwish' => $sandwish,
+        'tequenos' => $tequenos,
+        'panquecas' => $panquecas,
+        'waffles' => $waffles,
+        'adicionale' => $adicionale,
+        'croissants' => $croissants,
+        'postres' => $postres,
+
     ]) ?>
 
 </div>

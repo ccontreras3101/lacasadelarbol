@@ -192,55 +192,68 @@ class TbComandas extends \yii\db\ActiveRecord
     * @return \yii\db\ActiveQuery
     */
 
-        public static function getExpressos()
-        {
-            return TbProductos::find()->where(['grupo' => 'expresso'])->All();
-        }
-        public static function getLattes()
-        {
-            return TbProductos::find()->where(['grupo' => 'lattes'])->All();
-        }
-        public static function getBfrias()
-        {
-            return TbProductos::find()->where(['grupo' => 'b_frias'])->All();
-        }
-        public static function getEnergy()
-        {
-            return TbProductos::find()->where(['grupo' => 'energizant'])->All();
-        }
-        public static function getShake()
-        {
-            return TbProductos::find()->where(['grupo' => 'merengadas'])->All();
-        }
-        public static function getFruits()
-        {
-            return TbProductos::find()->where(['grupo' => 'm_frutas'])->All();
-        }
-        public static function getPaninis()
-        {
-            return TbProductos::find()->where(['grupo' => 'panini'])->All();
-        }
-        public static function getSalads()
-        {
-            return TbProductos::find()->where(['grupo' => 'ensaladas'])->All();
-        }
-        public static function getHotcakes()
-        {
-            return TbProductos::find()->where(['grupo' => 'p_caliente'])->All();
-        }
-        public static function getCakes()
-        {
-            return TbProductos::find()->where(['grupo' => 'tortas'])->All();
-        }
-        public static function getDeserts()
-        {
-            return TbProductos::find()->where(['grupo' => 'postres'])->All();
-        }
+    public static function getClasicos ()
+    {
+        return TbProductos::find()->where(['grupo' => 'clasicos '])->All();
+    }
+    public static function getAlinados()
+    {
+        return TbProductos::find()->where(['grupo' => 'alinados'])->All();
+    }
+    public static function getEspeciales()
+    {
+        return TbProductos::find()->where(['grupo' => 'especiales'])->All();
+    }
+    public static function getAutor()
+    {
+        return TbProductos::find()->where(['grupo' => 'autor'])->All();
+    }
+    public static function getMetodos()
+    {
+        return TbProductos::find()->where(['grupo' => 'metodos'])->All();
+    }
+    public static function getFrappuchin()
+    {
+        return TbProductos::find()->where(['grupo' => 'frappuchin'])->All();
+    }
+    public static function getFrullatos()
+    {
+        return TbProductos::find()->where(['grupo' => 'frullatos'])->All();
+    }
+    public static function getSandwish()
+    {
+        return TbProductos::find()->where(['grupo' => 'sandwish'])->All();
+    }
+    public static function getTequenos()
+    {
+        return TbProductos::find()->where(['grupo' => 'tequenos'])->All();
+    }
+    public static function getPanquecas()
+    {
+        return TbProductos::find()->where(['grupo' => 'panquecas'])->All();
+    }
+    public static function getWaffles()
+    {
+        return TbProductos::find()->where(['grupo' => 'waffles'])->All();
+    }
+    public static function getAdicionale()
+    {
+        return TbProductos::find()->where(['grupo' => 'adicionale'])->All();
+    }
+    public static function getCroissants()
+    {
+        return TbProductos::find()->where(['grupo' => 'croissants'])->All();
+    }
+    public static function getPostres()
+    {
+        return TbProductos::find()->where(['grupo' => 'postres'])->All();
+    }
+    public static function getMenu()
+    {
+        return TbProductos::find()->All();
+    }
 
     
-
-
-
 }
 
 
